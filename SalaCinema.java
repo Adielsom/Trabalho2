@@ -3,10 +3,9 @@ public class SalaCinema {
     private int capacidademaxima;
     private Filme filmeExibido;
 
-    public SalaCinema(int numeroSala, int capacidademaxima, Filme filmeExibido){
+    public SalaCinema(int numeroSala, int capacidademaxima){
         this.numeroSala = numeroSala;
         this.capacidademaxima = capacidademaxima;
-        this.filmeExibido = filmeExibido;
     }
 
     public int getNumeroSala(){
@@ -33,10 +32,22 @@ public class SalaCinema {
         this.filmeExibido = filmeExibido;
     }
 
-    public void exibirInformações(){
-        System.out.println("Numero da sala: "+ numeroSala);
-        System.out.println("Capaxidade maxima: "+ capacidademaxima);
-        filmeExibido.exibirInformacoes();
+    public void exibirInformacoes(){
+        System.out.println("Número da sala: " + numeroSala);
+        System.out.println("Capacidade máxima: " + capacidademaxima);
+        if (filmeExibido != null) {
+            filmeExibido.exibirInformacoes();
+        } else {
+            System.out.println("Nenhum filme exibido nesta sala.");
+        }
+    }
 
+    @Override
+    public String toString() {
+        return "SalaCinema{" +
+                "numeroSala=" + numeroSala +
+                ", capacidademaxima=" + capacidademaxima +
+                ", filmeExibido=" + (filmeExibido != null ? filmeExibido.getTitulo() : "Nenhum filme exibido") +
+                '}';
     }
 }
